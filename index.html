@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday to Someone Special ✨</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Outfit:wght@300;400;600;800&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at center, #2d0b0f 0%, #0a0203 100%);
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Luxury Gold Sparkles and Confetti */
+    .gold-particle {
+      position: absolute; background: linear-gradient(135deg, #ffd700, #b8860b);
+      border-radius: 50%; pointer-events: none; z-index: 1;
+      animation: floatUp 8s infinite linear; opacity: 0.6;
+    }
+
+    /* Master Card Wrapper */
+    .deck-wrapper {
+      width: 90%; max-width: 420px; height: 580px;
+      position: relative; z-index: 10; perspective: 1200px;
+    }
+
+    .slide-card {
+      width: 100%; height: 100%;
+      background: rgba(20, 5, 7, 0.6);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 24px;
+      padding: 30px 25px; display: flex; flex-direction: column;
+      align-items: center; justify-content: space-between; text-align: center;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.9), inset 0 0 20px rgba(255, 215, 0, 0.05);
+      position: absolute; top: 0; left: 0;
+      opacity: 0; transform: scale(0.9) translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+    .slide-card.active {
+      opacity: 1; transform: scale(1) translateY(0); pointer-events: auto;
+    }
+    .slide-card.exit {
+      opacity: 0; transform: scale(0.9) translateY(-30px); pointer-events: none;
+    }
+
+    /* Large Birthday Image Container */
+    .birthday-pic-frame {
+      width: 100%; height: 320px; background: #000;
+      border: 2px solid #ffd700; border-radius: 16px;
+      overflow: hidden; position: relative;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 15px rgba(255, 215, 0, 0.2);
+    }
+    .birthday-pic-frame img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* Royal Typography */
+    .royal-heading {
+      font-family: 'Marcellus', serif; font-size: 28px; font-weight: 400;
+      letter-spacing: 2px; background: linear-gradient(135deg, #fff 40%, #ffd700, #ff8da1);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .elegant-sub { color: #f3e5ab; font-size: 15px; font-weight: 300; letter-spacing: 0.5px; }
+
+    /* Luxury Buttons */
+    .gold-btn {
+      background: linear-gradient(135deg, #ffd700, #b8860b); color: #0a0203;
+      font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+      padding: 14px 35px; border: none; border-radius: 50px; cursor: pointer;
+      box-shadow: 0 8px 20px rgba(218, 165, 32, 0.3); transition: 0.4s ease;
+    }
+    .gold-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(218, 165, 32, 0.5); }
+
+    /* Interactive Gift Box Element */
+    .gift-magic-box {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      cursor: pointer; position: relative; margin: 10px 0;
+    }
+    .gift-box-icon {
+      font-size: 45px; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+      animation: bounceGift 1s infinite alternate ease-in-out; transition: 0.3s;
+    }
+    .tap-hint {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #ffd700;
+      margin-top: 5px; font-weight: 600; animation: pulseText 1.5s infinite ease-in-out;
+    }
+
+    /* Message Letter Box */
+    .letter-box {
+      width: 100%; height: 380px; background: rgba(10, 2, 3, 0.5);
+      border-radius: 16px; padding: 20px; text-align: left; overflow-y: auto;
+      font-size: 15px; line-height: 1.8; color: #f5f5f5; border-left: 3px solid #ffd700;
+    }
+
+    /* Animations */
+    @keyframes floatUp {
+      0% { transform: translateY(105vh) rotate(0deg) scale(0.5); opacity: 0; }
+      50% { opacity: 0.8; }
+      100% { transform: translateY(-10vh) rotate(360deg) scale(1); opacity: 0; }
+    }
+    @keyframes bounceGift {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-8px) scale(1.05); }
+    }
+    @keyframes pulseText {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Gold Particle Field -->
+  <div id="goldField"></div>
+
+  <!-- THE INTERACTIVE DECK -->
+  <div class="deck-wrapper">
+
+    <!-- SLIDE 1: THE BIG REVEAL COVER -->
+    <div class="slide-card active" id="slide1">
+      <h2 class="royal-heading">Celebrating You</h2>
+      <div class="birthday-pic-frame">
+        <img src="faisal.jpg" alt="Special Someone">
+      </div>
+      <p class="elegant-sub">"A modern tribute to an incredible soul..."</p>
+      <button class="gold-btn" onclick="nextSlide('slide1', 'slide2')">Open Surprise ✨</button>
+    </div>
+
+    <!-- SLIDE 2: THE INTERACTIVE TRIGGER CORE -->
+    <div class="slide-card" id="slide2">
+      <h2 class="royal-heading">Happy Birthday</h2>
+      <div class="birthday-pic-frame" style="height: 230px;">
+        <img src="brother.jpg" alt="Special Moment">
+      </div>
+      <p class="elegant-sub" style="font-size: 13px;">Your special surprise is locked inside the box below.</p>
+      
+      <!-- New Clickable Gift Box Element with Text Hint -->
+      <div class="gift-magic-box" onclick="igniteLetter()">
+        <div class="gift-box-icon" id="giftIcon">🎁</div>
+        <div class="tap-hint" id="hintText">Tap to Unwrap</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: THE HEARTFELT LETTER -->
+    <div class="slide-card" id="slide3">
+      <h2 class="royal-heading" style="font-size: 22px;">My Purest Prayer For You</h2>
+      <div class="letter-box" id="textTerminal"></div>
+      <p style="font-size: 12px; color: #ffd700; font-weight: 600; letter-spacing: 1px;">Forever Blessed to Have You 👑</p>
+    </div>
+
+  </div>
+
+  <script>
+    // Generate Gold Confetti Background
+    function initGoldDust() {
+      const field = document.getElementById('goldField');
+      for (let i = 0; i < 35; i++) {
+        const p = document.createElement('div');
+        p.className = 'gold-particle';
+        const size = Math.random() * 5 + 3;
+        p.style.width = size + 'px'; p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.animationDelay = Math.random() * 6 + 's';
+        p.style.animationDuration = (Math.random() * 4 + 5) + 's';
+        field.appendChild(p);
+      }
+    }
+    initGoldDust();
+
+    // Slide Swapping Engine
+    function nextSlide(curr, next) {
+      document.getElementById(curr).classList.add('exit');
+      document.getElementById(curr).classList.remove('active');
+      setTimeout(() => {
+        document.getElementById(next).classList.add('active');
+      }, 150);
+    }
+
+    // Pure English Heartfelt Letter
+    const specialBlessings = "Dear Faisal, ✨\n\nIn this journey of life, I have always had an unwavering, solid wall that I could rely on with my eyes completely closed—and that person is you. You are not just a guiding light; you are my greatest mentor, my constant support, and an incredibly special part of my world.\n\nOn your birthday, my heart overflows with deep prayers and wishes for you. May Almighty Allah bless you with spectacular success, unmatched growth, and prosperity at every single step of your journey. Whichever venture you step into, whichever dream you pursue, may it be touched by divine blessings, absolute honor, and monumental heights. 🌟\n\nMay Allah protect you from every evil eye, shielding you beautifully from the hardships and sorrows of this world. May this brilliant smile on your face remain radiant forever, and may your life be filled with profound peace, boundless joy, robust health, and a very long, beautiful life.\n\nEvery dream and aspiration you hold close to your heart, I pray that my Lord turns them into reality one by one, elevating you to the highest ranks of fulfillment and success. 👑\n\nThank you for standing firmly through every thick and thin, and for being the absolute best presence anyone could ever ask for. Happy Birthday! The absolute King of Hearts! ❤️";
+
+    let charPos = 0;
+    function typeStream() {
+      const box = document.getElementById('textTerminal');
+      if (charPos < specialBlessings.length) {
+        const character = specialBlessings.charAt(charPos);
+        box.innerHTML += character === '\n' ? '<br>' : character;
+        charPos++;
+        setTimeout(typeStream, 28);
+      }
+    }
+
+    function igniteLetter() {
+      const gift = document.getElementById('giftIcon');
+      const hint = document.getElementById('hintText');
+      
+      // Change gift to stars on click before transitioning
+      gift.innerHTML = "✨";
+      gift.style.transform = "scale(1.4)";
+      hint.style.opacity = "0";
+      
+      setTimeout(() => {
+        nextSlide('slide2', 'slide3');
+        typeStream();
+      }, 400);
+    }
+  </script>
+</body>
+</html>
